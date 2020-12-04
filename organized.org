@@ -1,3 +1,53 @@
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) PROJ(p) | DONE(d) CANCELLED(c)
+
 * Getting Yourself Organized with Org-mode
 
-  
+1. Write it down (capture)
+2. Decide if its actionable or not
+3. If it is actionable and too big, break it down into smaller tasks
+4. Decide the very next action to move towards "Done"
+5. /Do the actions/
+6. Frequently review the system
+
+* The Basics of Org Mode
+** Headlines & Outline Mode
+
+** Level 1 Headline
+*** Level 2 Headline A
+   
+    Some text belonging to the level 2
+   
+*** Level 2 Headline B
+
+    Some other text belonging to the level 2
+
+** To-Do Keywords
+
+*** TODO Thing 1 that needs to be done
+*** IN-PROG Thing 2 that needs to be done
+*** WAITING Thing 3 that needs to be done
+*** DONE Thing 4 that needs to be done
+    CLOSED: [2020-12-03 Thu 21:30]
+    
+   
+
+
+We can define custom keywords by adding the header:
+
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) PROJ(p) | DONE(d) CANCELLED(c)
+
+*** NEXT Thing 1 that needs to be done
+*** TODO Thing 2 that needs to be done
+*** WAITING Thing 3 that needs to be done
+*** SOMEDAY Thing 4 that needs to be done
+*** PROJ Thing 5 that needs to be done
+*** DONE Thing 6 that needs to be done
+    CLOSED: [2020-12-03 Thu 21:33]
+*** CANCELLED Thing 7 that needs to be done
+    CLOSED: [2020-12-03 Thu 21:33]
+
+The | symbol means that everything on the left side of it are considered actionable items. The symbols on the right side mark finished items. 
+The item in the () is a hot-key that can be activated by using C-c C-t inside of an item
+
+*** NEXT Item to do
+
