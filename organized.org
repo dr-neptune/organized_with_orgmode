@@ -1,4 +1,6 @@
-#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) PROJ(p) | DONE(d) CANCELLED(c)
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) IN-PROG(p) REPEAT(r) | DONE(d) CANCELLED(c)
+#+STARTUP: nologrepeat
+#+TAGS: DEPTH(d) IMPLEMENT(i) SKIM(s) ONE-TIME(o)
 
 * Getting Yourself Organized with Org-mode
 
@@ -9,8 +11,8 @@
 5. /Do the actions/
 6. Frequently review the system
 
-* The Basics of Org Mode
-** Headlines & Outline Mode
+#+TITLE: The Basics of Org Mode
+* Headlines & Outline Mode
 
 ** Level 1 Headline
 *** Level 2 Headline A
@@ -21,7 +23,7 @@
 
     Some other text belonging to the level 2
 
-** To-Do Keywords
+* To-Do Keywords
 
 *** TODO Thing 1 that needs to be done
 *** IN-PROG Thing 2 that needs to be done
@@ -50,4 +52,100 @@ The | symbol means that everything on the left side of it are considered actiona
 The item in the () is a hot-key that can be activated by using C-c C-t inside of an item
 
 *** NEXT Item to do
+
+* Schedule, Deadlines, & Agenda View
+
+** task #1 
+   SCHEDULED: <2020-12-06 Sun>
+** task #2
+   SCHEDULED: <2020-12-31 Thu> DEADLINE: <2021-01-01 Fri>
+** task #3 
+   SCHEDULED: <2020-12-08 Tue>
+** task #4 
+   DEADLINE: <2020-12-07 Mon>
+
+* Repeating Tasks
+
+** REPEAT Example Task
+   SCHEDULED: <2020-12-05 Tue ++1w>
+
+** Specifying Intervals
+
+We can use the following units to specify the repeat interlude: d (days) w (weeks) m (months) y (year
+
+A single + means that the timestamp will be rescheduled by the interval when the task is marked as done. 
+A ++ means reschedule it in the future. It should carry on that time interval
+A .+ means take the current date, and add the time unit to it
+
+We can remove the repeating log entries with 
+#+STARTUP: nologrepeat
+
+* Checklists
+
+** NEXT Easy peasy checklist [0/5]
+- [ ] Do thing 1
+- [ ] Do thing 2
+- [ ] Do thing 3
+- [ ] Do thing 4
+- [ ] Do thing 5
+
+
+** NEXT Easy peasy checklist 2 [70%]
+- [X] Do thing 1
+- [X] Do thing 2
+- [X] Do thing 3
+- [X] Do thing 4
+- [X] Do thing 5
+- [ ] Do thing 6
+- [ ] Do thing 7
+- [X] Do thing 8
+- [ ] Do thing 9
+- [X] Do thing 10
+
+#+TITLE: Advanced Topics
+
+* Tags
+
+Tags are a label for headlines. They add contexts to tasks. 
+
+We can define a set of tags at the beginning of the file. 
+
+#+TAGS: DEPTH(d) IMPLEMENT(i) SKIM(s) ONE-TIME(o)
+
+To assign a tag to a headline, place the cursor in the headline or the block below it and press C-c C-q
+
+** NEXT Example Task 1                                                :DEPTH:
+** Example Task 2                                                 :IMPLEMENT:
+** Example Task 3                                                      :SKIM:
+** Example Task 4                                                     :DEPTH:
+** NEXT Example Task 5                                                :DEPTH:
+
+You can assign a free-text tag as well by pressing tab in the options tray
+
+** Example Task 6                                                 :EasyPeasy:
+
+Tags can also be written with an inherited hierarchy
+
+** Example Task 7                                               :MAINTENANCE:
+*** Example Task 8                                          :DEPTH:IMPLEMENT:
+
+* Advanced Agenda Views
+
+*** Agenda for Current Week or Day
+
+We can set the default timespan of the agenda view by setting the variable `org-agenda-span` to day, week, month, year.
+
+The other way we can do it is with prefixing of the agenda command. Prefixing is done with C-u and a number. 
+
+So C-u 3 C-c a will call the agenda for 3 days
+
+*** List of all TODO Entries
+
+We can list all the TODO entries by calling C-c a t
+
+We can look at different flags with the N r syntax
+
+*** Entries with a Special TODO Keyword
+
+If we choose shift-t, we can choose multiples. For example, we could do NEXT|TODO to see all the next and todo keywords. 
 
