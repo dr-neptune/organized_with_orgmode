@@ -115,7 +115,7 @@ We can define a set of tags at the beginning of the file.
 To assign a tag to a headline, place the cursor in the headline or the block below it and press C-c C-q
 
 ** NEXT Example Task 1                                                :DEPTH:
-** Example Task 2                                                 :IMPLEMENT:
+** NEXT Example Task 2                                            :IMPLEMENT:
 ** Example Task 3                                                      :SKIM:
 ** Example Task 4                                                     :DEPTH:
 ** NEXT Example Task 5                                                :DEPTH:
@@ -149,3 +149,120 @@ We can look at different flags with the N r syntax
 
 If we choose shift-t, we can choose multiples. For example, we could do NEXT|TODO to see all the next and todo keywords. 
 
+*** Match a TAGS/PROP/TODO query
+
+C-c a m will give us the opportunity to enter tags and logical expressions
+
+We could look up tags like MAINTENANCE or DEPTH, or things like 
+
+MAINTENANCE|DEPTH="NEXT"
+
+*** Searching for keywords
+
+C-c a s does full text search terms. It also supports regular expressions. 
+
+The regular expressions are wrapped in curly braces like {a?Apostol}
+
+* Customized Agenda Views
+
+These are two ways to define customized agenda views: 
+
+** Custom Agenda View Editor 
+
+C-a a s-c
+
+** Directly in the startup file 
+
+We can write out views with the variable org-agenda-custom-commands.
+
+Here is an example: 
+
+#+BEGIN_SRC emacs-lisp
+'(org-agenda-custom-commands
+   '(("A" "Agenda and all NEXTs" tags-todo "DEPTH|IMPLEMENT=\"NEXT\""
+      ((org-agenda-span 'day)))
+     ("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)))
+#+END_SRC
+
+* Drawers, Logging, and Quick Notes
+
+Drawers start with a line that has the name of the drawer between colons (:), and are usually written in uppercase. 
+
+There are some reserved names for drawers:
+
+:PROPERTIES:
+:END:
+This holds special config info on the current item or subtree in the org file. It has to start immediately below the headline. 
+
+:LOGBOOK:
+:END:
+This is used to log things. 
+
+
+:OTHER:
+Here is some stuff in the drawer
+:END:
+
+** What is logging good for?
+
+Logging means we can create a sort of micro-blog for every task that we are doing. Its also a good CYA strategy
+
+:LOGBOOK:
+- Note taken on [2020-12-08 Tue 21:04] \\
+  Here is another note, with an update
+- Note taken on [2020-12-08 Tue 21:04] \\
+  This is a test showing that I can log a note inside of a logbook drawer
+:END:
+
+** Taking a quick note
+
+When the cursor is inside of a task or even on a line with the task in an agenda view, we can just type C-c C-z to open a window where we can write a note. 
+
+   - Note taken on [2020-12-08 Tue 20:56] \\
+     This is a quick note
+
+* Archiving
+
+Org offers two archiving methods: 
+
+*Internal Archiving* just sets an :ARCHIVE: tag which disables expanding that entry and prevents it from showing in agendas. This is done with C-c C-x a
+
+** Example Task                                                     :ARCHIVE:
+
+Stuff done here 
+
+:LOGBOOK:
+- Note taken on [2020-12-08 Tue 21:08] \\
+  This is a quick note about what was done here
+:END:
+
+*Moving Subtrees* means we move the subtree to another file, the archive file. This keeps the org file lean and mean
+
+** Moving Subtrees to an Archive File
+
+We define an archive file like this: 
+#+ARCHIVE: %s_archive::
+
+where %s is the filename of the org file
+
+#+ARCHIVE: archive.org_archive::
+
+We can also set the archive target for a subtree. For example: 
+
+** Books to read 
+:PROPERTIES:
+:ARCHIVE: read-books.org::* Read Books
+:END:
+
+*** Yet Another Book Read (YABR)
+
+mhm 
+
+** Revisiting Archive Files
+
+If we wish to search our archives, we could just use grep since it is all plain text
+
+We can also swap to the archive file we know it is in, then switch to the agenda dispatcher C-c a, then < to activate "Buffer, subtree/region restriction" to make it only apply to the current window, then press 's' to search the agenda for what we are looking for.
