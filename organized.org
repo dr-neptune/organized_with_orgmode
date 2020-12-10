@@ -266,3 +266,38 @@ mhm
 If we wish to search our archives, we could just use grep since it is all plain text
 
 We can also swap to the archive file we know it is in, then switch to the agenda dispatcher C-c a, then < to activate "Buffer, subtree/region restriction" to make it only apply to the current window, then press 's' to search the agenda for what we are looking for.
+
+#+TITLE: Making Things More Smooth
+
+* Automatic Logging of Status Changes
+
+This will have the system prompt us for a comment when a task occurs. 
+
+#+SEQ_TODO: NEXT(n) TODO(t@/!) WAITING(w) SOMEDAY(s) IN-PROG(p) REPEAT(r) | DONE(d) CANCELLED(c)
+
+The @ indicates that we want to log a timestamp and a note when we change the keyword to TODO. The ! defines that we want to log a time stamp when we change the keyword from TODO to something else
+
+** TODO Something to do
+   :LOGBOOK:
+   - State "TODO"       from "WAITING"    [2020-12-09 Wed 21:34] \\
+     This thing still must be done
+   - State "WAITING"    from "TODO"       [2020-12-09 Wed 21:34]
+   - State "TODO"       from "NEXT"       [2020-12-09 Wed 21:34] \\
+     This is a thing that must be done
+   :END:
+
+** Disabling automatic logging for a task
+
+If we want to disable logging, especially for repeating tasks, then we can add a line to the PROPERTIES drawer: 
+
+:PROPERTIES:
+:LOGGING:
+:END:
+
+** IN-PROG Variables that influence automatic logging
+
+*org-log-done* defined if tasks that are finished will create a logbook entry 
+*org-log-reschedule* defines if we want to create a log entry whenever we reschedule a task
+
+* Splitting Your System Into Several Files
+
