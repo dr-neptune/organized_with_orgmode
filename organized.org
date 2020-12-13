@@ -301,3 +301,52 @@ If we want to disable logging, especially for repeating tasks, then we can add a
 
 * Splitting Your System Into Several Files
 
+If we wanted to split one big org file into multiple little ones, we could just copy the items into distinct files -- or we could go deeper into refiling.
+
+** Customizing Refiling
+
+We need to customize 3 variables for an elegant way to refile items: 
+
+*** org-refile-targets
+
+This defines where refiling can place items. 
+
+*** org-refile-use-outline-path
+
+This needs to be set to file which means we see the target path including the file name of the org-file where we are placing the item
+
+*** org-refile-allow-creating-parent-nodes
+
+This defines if we are allowed to create new parent headlines in the target file. We set this to confirm  if the target we entered would create a new headline
+
+** example work thing 1
+** example work thing 2
+** example home thing 1 
+** example home thing 3
+** example work thing 3
+** example home thing 2
+** example work thing 4
+** example home thing 4
+
+If we want to move the entries to other org files, we can use C-c C-w and choose the target. If we want to copy them, then we could do C-c M-w
+
+We can also set our agenda files to only include one or the other, or both with this elisp:
+
+#+BEGIN_SRC emacs-lisp
+(defun org-focus-private()
+  "Set focus on private things"
+  (setq org-agenda-files '("~/Documents/org/private.org")))
+
+(defun org-focus-work()
+  "Set focus on work things"
+  (setq org-agenda-files '("~/Documents/org/work.org")))
+
+(defun org-focus-all()
+  "Set focus on all the things"
+  (setq org-agenda-files '("~/Documents/org/private.org" "~/Documents/org/work.org")))
+#+END_SRC
+
+* The First Capture Template
+
+
+
