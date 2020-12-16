@@ -348,5 +348,6 @@ We can also set our agenda files to only include one or the other, or both with 
 
 * The First Capture Template
 
+With capture templates, we can define forms to capture our ideas in a smart way
 
 

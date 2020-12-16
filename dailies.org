@@ -1,0 +1,34 @@
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) IN-PROG(p) REPEAT(r) | DONE(d) CANCELLED(c)
+#+TAGS: MAIN(m) FOCUS(f) MANDATORY(n) QUICK(q) LONG(l)
+
+* Today <2020-12-15 Tue>
+** DONE Meetings [4/4]                                            :MANDATORY:
+   CLOSED: [2020-12-15 Tue 20:59] SCHEDULED: <2020-12-15 Tue>
+- [X] Alembic
+- [X] AI Touchpoint
+- [X] PL DS Meeting
+  - Note taken on [2020-12-15 Tue 20:44] \\
+    This was a dry run presentation of the Alembic project. I think it went somewhat smoothly.
+     
+    Bryce showed a way to view the web scraping in action
+- [X] Jenny 1x1
+** DONE Alembic                                                       :FOCUS:
+   CLOSED: [2020-12-15 Tue 20:59] SCHEDULED: <2020-12-15 Tue>
+   - Note taken on [2020-12-15 Tue 20:41] \\
+     I worked on the library table today.
+     
+     Features added include: 
+     
+     - names of uploaded files, mailto for owner, links to uploaded file and link to summary
+     - Most of the long title hiding was implemented
+     - First steps toward adding an ibuffer under the table when file links have been clicked were implemented
+     
+     I also added more buttons for the pdf upload (for the summarization part), and cleaned up the look of the other tabs
+
+** NEXT Insurance Advisor                                              :LONG:
+:PROPERTIES:
+:ARCHIVE: professional.org::
+:END:
+   SCHEDULED: <2020-12-15 Tue>
+
+
