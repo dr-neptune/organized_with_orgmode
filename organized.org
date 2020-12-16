@@ -350,4 +350,21 @@ We can also set our agenda files to only include one or the other, or both with 
 
 With capture templates, we can define forms to capture our ideas in a smart way
 
+I bound the key to C-c c. You need to define an org template. In this case, here is the template I used for a work todo: 
 
+* TODO %^{Description} :NEW:
+  Desired Outcome: %?
+:LOGBOOK:
+- Added: %U
+:END:
+
+We could also do this in elisp like so: 
+
+#+BEGIN_SRC emacs-lisp
+'(org-capture-templates
+  (quote
+   (("W" "Work Templates")
+    ("Wt" "Work TODO" entry
+     (file+headline "~/Documents/org/organized_org/professional.org" "Scratch")
+     (file "~/Documents/org/organized_org/wcap.org")))))
+#+END_SRC

@@ -57,3 +57,15 @@
 * Good Ideas
 ** Create shiny apps to automate basic EDA
 ** Generalize CCN to accept any table
+
+* Scratch
+** TODO Upload Object Detection Code                                    :NEW:
+   Desired Outcome: Place the object detection code in Bitbucket. E-mail Jenny after
+ :LOGBOOK:
+ - Added: [2020-12-15 Tue 21:53]
+ :END:
+** TODO Concrete Mathematics                                            :NEW:
+   Desired Outcome: Set up meetings for concrete mathematics book club
+ :LOGBOOK:
+ - Added: [2020-12-15 Tue 22:14]
+ :END:
