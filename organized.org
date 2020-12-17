@@ -361,10 +361,21 @@ I bound the key to C-c c. You need to define an org template. In this case, here
 We could also do this in elisp like so: 
 
 #+BEGIN_SRC emacs-lisp
-'(org-capture-templates
-  (quote
-   (("W" "Work Templates")
-    ("Wt" "Work TODO" entry
-     (file+headline "~/Documents/org/organized_org/professional.org" "Scratch")
-     (file "~/Documents/org/organized_org/wcap.org")))))
+;; capture templates
+(setq org-capture-templates
+      '(("W" "Work Templates")
+	("Wt" "work todo" entry
+	 (file+headline "~/Documents/org/organized_org/professional.org" "Scratch")
+	 (file "~/Documents/org/organized_org/wcap.org"))
+	("P" "Personal Templates")
+	("Pt" "Personal Todo" entry
+	 (file+headline "~/Documents/org/study.org" "Scratch")
+	 (file "~/Documents/org/organized_org/ptodo.org"))
+	("Pb" "Personal Book" entry
+	 (file+headline "~/Documents/org/organized_org/book-review.org" "Books")
+	 "* %U - %^{Title}\nComments: %?")
+	("Pi" "Idea" entry
+	 (file+headline "~/Documents/org/organized_org/idea-scratch.org" "Idea")
+	 "* %U - %^{Title}\nComments: %?")))
 #+END_SRC
+
