@@ -418,7 +418,9 @@ Suppose we have the following:
 #+END_SRC
 
 * Timers
-
+:PROPERTIES:
+:CUSTOM_ID: Timers_and_things
+:END:
 The key binding for starting a countdown timer is *C-c C-x ;*
 There is also a count up timer: *C-c C-x 0*
 We can pause timers: *C-c C-x ,*
@@ -436,7 +438,7 @@ descriptive timestamps with C-c C-x -
 - 0:01:40 :: task 5
 
 * Clocking
-
+<<Clocking Section>>
 This is helpful for knowing how long tasks take. It could also be useful in the future if I want to charge by the hour for tasks (i.e. contract work or timesheet work).
 
 To clock in, place the cursor on a task and press C-c C-x C-i (like clock in)
@@ -488,7 +490,7 @@ We can also add this to column view
    :Effort:   0:05
    :END:
    :LOGBOOK:
-   CLOCK: [2020-12-17 Thu 20:11]
+   CLOCK: [2020-12-17 Thu 20:11]--[2020-12-17 Thu 20:28] =>  0:17
    CLOCK: [2020-12-17 Thu 20:08]--[2020-12-17 Thu 20:10] =>  0:02
    :END:
 
@@ -504,6 +506,38 @@ We can also add this to column view
 
 #+TITLE: Linking, Attachments, and More
 
-* Linking (internal)
+* Linking (Internal)
 
+We can target the following with internal links: 
+
+- Headlines
+  - [ [a headline] ]
+    - [[Ordered Tasks]]
+
+- Named Targets: #+NAME: or <<target>>
+  - [ [Name Target][Named target with description text] ]
+    - [[Column View][This is the section of column views]]
+
+- Custom IDs: CUSTOM_ID Property
+  - [ [#MyID123] ]
+    - [[Clocking Section][Link to clocking section]]
+      - Link to [[#Timers_and_things][Custom ID Timers]]
+
+- Radio Targets
+  - <<<radio_target>>>
+  - radio targets are activated with C-c C-c. Once activated every occurrence of the target string will transform into a link to that target
+    - <<<swiss>>>
+
+
+The swiss army chainsaw of text editing is emacs. That said, it did not originate in swiss territories.
+
+We can edit links with C-c C-l
+We can follow a link with C-c C-o (like open)
+We can return to where we came from with C-c &
+
+* Linking (External)
+
+The syntax for linking to other files is usually protocol:location. 
+
+For example, for an external url [ [url][url-description] ] or [[duckduckgo.com][duckduckgo]]
 
