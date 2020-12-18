@@ -379,3 +379,131 @@ We could also do this in elisp like so:
 	 "* %U - %^{Title}\nComments: %?")))
 #+END_SRC
 
+
+#+TITLE: Workflows and Time Tracking
+
+* Ordered Tasks
+
+In this section we learn how to enforce that tasks are completed in a predefined order
+
+Suppose we have the following:
+
+** DONE Build A House [100%]                                        :ORDERED:
+   CLOSED: [2020-12-17 Thu 19:05]
+   :PROPERTIES:
+   :ORDERED:  t
+   :END:
+   - State "NEXT"       from "TODO"       [2020-12-17 Thu 19:04]
+*** DONE Build the basement
+    CLOSED: [2020-12-17 Thu 19:02] SCHEDULED: <2020-12-17 Thu>
+    - State "WAITING"    from "TODO"       [2020-12-17 Thu 19:02]
+*** DONE Build the ground floor
+    CLOSED: [2020-12-17 Thu 19:04] SCHEDULED: <2020-12-18 Fri>
+*** DONE Build the roof
+    CLOSED: [2020-12-17 Thu 19:04] SCHEDULED: <2020-12-19 Sat>
+*** DONE Build out doors and windows
+    CLOSED: [2020-12-17 Thu 19:04]
+- [X] Doors
+- [X] Windows
+
+ We can add a special property called ordered which is placed on the parent task. The keybinding is C-c C-x shift-O
+
+#+BEGIN_SRC emacs-lisp
+;; set up an ordered tag when ordered is called
+(setq org-track-ordered-property-with-tag 1)
+
+;; block the parent task from being marked done if subtasks aren't completed
+(setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
+#+END_SRC
+
+* Timers
+
+The key binding for starting a countdown timer is *C-c C-x ;*
+There is also a count up timer: *C-c C-x 0*
+We can pause timers: *C-c C-x ,*
+and resume them with the same binding 
+If we want to stop the timer, we prefix it with C-u -- so *C-u C-c C-x ,*
+
+
+We can insert 
+simple timestamps  with *C-c C-x .* 0:00:00 0:00:07
+descriptive timestamps with C-c C-x - 
+- 0:00:48 :: task 1
+- 0:00:55 :: task 2
+- 0:00:59 :: task 3
+- 0:01:01 :: task 4
+- 0:01:40 :: task 5
+
+* Clocking
+
+This is helpful for knowing how long tasks take. It could also be useful in the future if I want to charge by the hour for tasks (i.e. contract work or timesheet work).
+
+To clock in, place the cursor on a task and press C-c C-x C-i (like clock in)
+To clock out, we do C-c C-x C-o (like clock out)
+If you accidentally clocked into the wrong task, you can cancel the clock with C-c C-x C-q
+
+
+** Example Task 1 
+   :LOGBOOK:
+   CLOCK: [2020-12-17 Thu 19:38]--[2020-12-17 Thu 20:08] =>  0:30
+   CLOCK: [2020-12-17 Thu 19:33]--[2020-12-17 Thu 19:34] =>  0:01
+   :END:
+** Example Task 2 
+   :LOGBOOK:
+   CLOCK: [2020-12-17 Thu 19:37]--[2020-12-17 Thu 19:38] =>  0:01
+   CLOCK: [2020-12-17 Thu 19:37]--[2020-12-17 Thu 19:37] =>  0:00
+   CLOCK: [2020-12-17 Thu 19:35]--[2020-12-17 Thu 19:36] =>  0:01 
+   :END:
+
+We can also log breaks. If we clock out of a task, we can clock back into that previous task with C-c C-x C-x
+
+Suppose we mostly work on just a few tasks throughout the day. We can get a menu of tasks with C-u C-c C-x C-x . With this we can choose a task to clock into from recent tasks. 
+
+If we want to see the data on the tasks we have been working on, we can do C-c C-x C-d for an overview of how much time has been spent overall on each task.
+
+* Column View
+
+Column view offers viewing the org file in a table structure. 
+
+The definition can be done on a global level or a subtree level
+
+#+COLUMNS: %58ITEM(Task) %7TODO %6CLOCKSUM(Clock)
+
+To switch to column view, use C-c C-x C-c
+If we want to leave column view, we just press q while at the heading for which it was enabled 
+
+* Effort Estimates
+
+org offers the EFFORT property to keep track of estimates of effort
+
+#+PROPERTY: Effort_All 0:10 0:20 0:30 1:00 2:00 4:00 6:00 8:00
+
+We can also add this to column view
+
+#+COLUMNS: %58ITEM(Details) %8Effort(Time){:} %6CLOCKSUM(Clock)
+
+** Another Task
+   :PROPERTIES:
+   :Effort:   0:05
+   :END:
+   :LOGBOOK:
+   CLOCK: [2020-12-17 Thu 20:11]
+   CLOCK: [2020-12-17 Thu 20:08]--[2020-12-17 Thu 20:10] =>  0:02
+   :END:
+
+** A different task                                                 :ORDERED:
+   :PROPERTIES:
+   :Effort:   0:30
+   :ORDERED:  t
+   :END:
+   :LOGBOOK:
+   CLOCK: [2020-12-17 Thu 20:11]--[2020-12-17 Thu 20:11] =>  0:00
+   CLOCK: [2020-12-17 Thu 20:11]--[2020-12-17 Thu 20:11] =>  0:00
+   :END:
+
+#+TITLE: Linking, Attachments, and More
+
+* Linking (internal)
+
+
