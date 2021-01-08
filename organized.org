@@ -1,8 +1,12 @@
-#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) IN-PROG(p) REPEAT(r) | DONE(d) CANCELLED(c)
+#+seq_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) IN-PROG(p) REPEAT(r) | DONE(d) CANCELLED(c)
 #+STARTUP: nologrepeat
 #+TAGS: DEPTH(d) IMPLEMENT(i) SKIM(s) ONE-TIME(o)
+#+PRIORITIES 1 5 3
 
 * Getting Yourself Organized with Org-mode
+  :PROPERTIES:
+  :ID:       91902295-2590-4732-bd57-920b7ab3ce57
+  :END:
 
 1. Write it down (capture)
 2. Decide if its actionable or not
@@ -13,23 +17,50 @@
 
 #+TITLE: The Basics of Org Mode
 * Headlines & Outline Mode
+  :PROPERTIES:
+  :ID:       321391f7-ac5a-4f3d-8296-a73de064a61e
+  :END:
 
 ** Level 1 Headline
+   :PROPERTIES:
+   :ID:       fcfcb030-2abd-4043-9ee1-ada7fc64da28
+   :END:
 *** Level 2 Headline A
+    :PROPERTIES:
+    :ID:       640ce82f-3463-4863-ab11-c87827e30591
+    :END:
    
     Some text belonging to the level 2
    
 *** Level 2 Headline B
+    :PROPERTIES:
+    :ID:       cdfd8c69-95e2-4fb9-ae97-c3e431889fa4
+    :END:
 
     Some other text belonging to the level 2
 
 * To-Do Keywords
+  :PROPERTIES:
+  :ID:       cf90fee4-3733-45b6-8cd8-d712f565b097
+  :END:
 
 *** TODO Thing 1 that needs to be done
+    :PROPERTIES:
+    :ID:       148f2d22-689a-4f4e-8acf-113b6f168866
+    :END:
 *** IN-PROG Thing 2 that needs to be done
+    :PROPERTIES:
+    :ID:       2c8672b9-d82b-47b2-aefe-2f46809c48a5
+    :END:
 *** WAITING Thing 3 that needs to be done
+    :PROPERTIES:
+    :ID:       2fccdf8a-883e-454d-93ad-437bca6548bd
+    :END:
 *** DONE Thing 4 that needs to be done
     CLOSED: [2020-12-03 Thu 21:30]
+    :PROPERTIES:
+    :ID:       a8ba0f22-b5d7-4873-a43f-c2eca9ff616a
+    :END:
     
    
 
@@ -39,37 +70,85 @@ We can define custom keywords by adding the header:
 #+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) PROJ(p) | DONE(d) CANCELLED(c)
 
 *** NEXT Thing 1 that needs to be done
+    :PROPERTIES:
+    :ID:       fa5591f2-2d07-49a7-a7ca-1ccbbc26573a
+    :END:
 *** TODO Thing 2 that needs to be done
+    :PROPERTIES:
+    :ID:       3fd84481-d9e2-4e5b-9911-13d5131884d5
+    :END:
 *** WAITING Thing 3 that needs to be done
+    :PROPERTIES:
+    :ID:       953ed299-15f6-4855-ab52-afae10b5bb76
+    :END:
 *** SOMEDAY Thing 4 that needs to be done
+    :PROPERTIES:
+    :ID:       e1981508-a21e-44f1-bf94-5ca9af4b5dcb
+    :END:
 *** PROJ Thing 5 that needs to be done
+    :PROPERTIES:
+    :ID:       9c8b5f32-4ea1-443b-aa2e-1a94509d10fe
+    :END:
 *** DONE Thing 6 that needs to be done
     CLOSED: [2020-12-03 Thu 21:33]
+    :PROPERTIES:
+    :ID:       23ab19a0-ca87-41ef-bcc7-62de75c836f8
+    :END:
 *** CANCELLED Thing 7 that needs to be done
     CLOSED: [2020-12-03 Thu 21:33]
+    :PROPERTIES:
+    :ID:       58e79a79-2efe-47b5-9784-7f11a9310a9e
+    :END:
 
 The | symbol means that everything on the left side of it are considered actionable items. The symbols on the right side mark finished items. 
 The item in the () is a hot-key that can be activated by using C-c C-t inside of an item
 
 *** NEXT Item to do
+    :PROPERTIES:
+    :ID:       8bc8c1cf-909d-4d1c-969f-b77e672a5441
+    :END:
 
 * Schedule, Deadlines, & Agenda View
+  :PROPERTIES:
+  :ID:       9b7ba36b-44f8-42fb-9535-de9240a4d0c5
+  :END:
 
 ** task #1 
    SCHEDULED: <2020-12-06 Sun>
+   :PROPERTIES:
+   :ID:       72f18820-29d8-47b3-b51a-06305dabe5f8
+   :END:
 ** task #2
    SCHEDULED: <2020-12-31 Thu> DEADLINE: <2021-01-01 Fri>
+   :PROPERTIES:
+   :ID:       1d958672-d067-408a-b8a8-6526ed938600
+   :END:
 ** task #3 
    SCHEDULED: <2020-12-08 Tue>
+   :PROPERTIES:
+   :ID:       8aefa6c4-f140-4fef-8ff9-0fa025f8c576
+   :END:
 ** task #4 
    DEADLINE: <2020-12-07 Mon>
+   :PROPERTIES:
+   :ID:       89c269de-e686-43ea-b871-24dfbbbd7d43
+   :END:
 
 * Repeating Tasks
+  :PROPERTIES:
+  :ID:       72f9aa4e-eb66-4b94-980b-171f09352cea
+  :END:
 
 ** REPEAT Example Task
    SCHEDULED: <2020-12-05 Tue ++1w>
+   :PROPERTIES:
+   :ID:       b987f546-5340-4771-8af2-5b9d8eb9be5b
+   :END:
 
 ** Specifying Intervals
+   :PROPERTIES:
+   :ID:       340199fe-872f-4152-bc90-310e67b9ad73
+   :END:
 
 We can use the following units to specify the repeat interlude: d (days) w (weeks) m (months) y (year
 
@@ -81,16 +160,32 @@ We can remove the repeating log entries with
 #+STARTUP: nologrepeat
 
 * Checklists
+  :PROPERTIES:
+  :ID:       b42dbc2b-3dde-4b90-b3eb-e8ac10798017
+  :END:
 
 ** NEXT Easy peasy checklist [0/5]
+   :PROPERTIES:
+   :ID:       43d10aa3-395b-4824-a1fd-1242f3a31acc
+   :END:
 - [ ] Do thing 1
 - [ ] Do thing 2
 - [ ] Do thing 3
 - [ ] Do thing 4
 - [ ] Do thing 5
 
+** Check it out [0/3]
+   :PROPERTIES:
+   :ID:       4b186529-f45b-42c5-8713-aca9dab2a0d8
+   :END:
+- [ ] one
+- [ ] two
+- [ ] three 
 
 ** NEXT Easy peasy checklist 2 [70%]
+   :PROPERTIES:
+   :ID:       f79536e9-ce68-42cc-8fb8-acec484e1e51
+   :END:
 - [X] Do thing 1
 - [X] Do thing 2
 - [X] Do thing 3
@@ -105,7 +200,10 @@ We can remove the repeating log entries with
 #+TITLE: Advanced Topics
 
 * Tags
-
+  :PROPERTIES:
+  :ID:       a718ad77-60a2-4568-a574-a4de6875e16f
+  :END:
+  
 Tags are a label for headlines. They add contexts to tasks. 
 
 We can define a set of tags at the beginning of the file. 
@@ -115,23 +213,53 @@ We can define a set of tags at the beginning of the file.
 To assign a tag to a headline, place the cursor in the headline or the block below it and press C-c C-q
 
 ** NEXT Example Task 1                                                :DEPTH:
+   :PROPERTIES:
+   :ID:       770184f7-cb5b-4445-9d13-e828ac96a3cc
+   :END:
 ** NEXT Example Task 2                                            :IMPLEMENT:
+   :PROPERTIES:
+   :ID:       51c6cf57-7415-407f-9bdc-5a94f472f6da
+   :END:
 ** Example Task 3                                                      :SKIM:
+   :PROPERTIES:
+   :ID:       b3a40834-daea-4ceb-aa58-765215fbc083
+   :END:
 ** Example Task 4                                                     :DEPTH:
+   :PROPERTIES:
+   :ID:       ec3ac248-211b-484a-bc85-1d287410aa31
+   :END:
 ** NEXT Example Task 5                                                :DEPTH:
+   :PROPERTIES:
+   :ID:       747dc27e-be09-4e7f-b869-46d70dc704a0
+   :END:
 
 You can assign a free-text tag as well by pressing tab in the options tray
 
 ** Example Task 6                                                 :EasyPeasy:
+   :PROPERTIES:
+   :ID:       3fb86f24-9157-4c00-a925-d2d6f2471aef
+   :END:
 
 Tags can also be written with an inherited hierarchy
 
 ** Example Task 7                                               :MAINTENANCE:
+   :PROPERTIES:
+   :ID:       0e5e8178-a670-4af0-826c-35f32c64ae5b
+   :END:
 *** Example Task 8                                          :DEPTH:IMPLEMENT:
+    :PROPERTIES:
+    :ID:       3f26661d-12bb-4539-803b-be7dcf8b344a
+    :END:
 
 * Advanced Agenda Views
+  :PROPERTIES:
+  :ID:       8bac3194-5b58-4caf-8a85-8b1f12b73cb2
+  :END:
 
 *** Agenda for Current Week or Day
+    :PROPERTIES:
+    :ID:       c1cd1cae-6df9-4033-a54a-16243a994966
+    :END:
 
 We can set the default timespan of the agenda view by setting the variable `org-agenda-span` to day, week, month, year.
 
@@ -140,16 +268,25 @@ The other way we can do it is with prefixing of the agenda command. Prefixing is
 So C-u 3 C-c a will call the agenda for 3 days
 
 *** List of all TODO Entries
+    :PROPERTIES:
+    :ID:       e0932d23-7f24-4167-9597-c40fa940243b
+    :END:
 
 We can list all the TODO entries by calling C-c a t
 
 We can look at different flags with the N r syntax
 
 *** Entries with a Special TODO Keyword
+    :PROPERTIES:
+    :ID:       20b4aba5-954f-4cb7-b1d3-d61a2b3c7656
+    :END:
 
 If we choose shift-t, we can choose multiples. For example, we could do NEXT|TODO to see all the next and todo keywords. 
 
 *** Match a TAGS/PROP/TODO query
+    :PROPERTIES:
+    :ID:       ec2dc830-e90e-42e1-94d6-24753ab4c497
+    :END:
 
 C-c a m will give us the opportunity to enter tags and logical expressions
 
@@ -158,20 +295,32 @@ We could look up tags like MAINTENANCE or DEPTH, or things like
 MAINTENANCE|DEPTH="NEXT"
 
 *** Searching for keywords
+    :PROPERTIES:
+    :ID:       c2bca3c6-7572-460c-9600-c742dd3da244
+    :END:
 
 C-c a s does full text search terms. It also supports regular expressions. 
 
 The regular expressions are wrapped in curly braces like {a?Apostol}
 
 * Customized Agenda Views
+  :PROPERTIES:
+  :ID:       1156af53-3198-46b4-9ce6-ea3ef3b3487d
+  :END:
 
 These are two ways to define customized agenda views: 
 
 ** Custom Agenda View Editor 
+   :PROPERTIES:
+   :ID:       6ca908b9-8857-46ec-a6e0-27445cec6fa7
+   :END:
 
 C-a a s-c
 
 ** Directly in the startup file 
+   :PROPERTIES:
+   :ID:       763aa39d-eee0-497a-93f9-d20068ee4b51
+   :END:
 
 We can write out views with the variable org-agenda-custom-commands.
 
@@ -188,6 +337,9 @@ Here is an example:
 #+END_SRC
 
 * Drawers, Logging, and Quick Notes
+  :PROPERTIES:
+  :ID:       7fe5de87-3d8a-4886-bea5-4481a4fd6f97
+  :END:
 
 Drawers start with a line that has the name of the drawer between colons (:), and are usually written in uppercase. 
 
@@ -207,6 +359,9 @@ Here is some stuff in the drawer
 :END:
 
 ** What is logging good for?
+   :PROPERTIES:
+   :ID:       b19c098e-8c3c-4882-8e84-1f8a41b86137
+   :END:
 
 Logging means we can create a sort of micro-blog for every task that we are doing. Its also a good CYA strategy
 
@@ -218,19 +373,30 @@ Logging means we can create a sort of micro-blog for every task that we are doin
 :END:
 
 ** Taking a quick note
+   :PROPERTIES:
+   :ID:       4bd7fb81-65a9-4db9-894f-669f959bdb04
+   :END:
 
+   - Note taken on [2021-01-07 Thu 21:03] \\
+     This is a quick note
 When the cursor is inside of a task or even on a line with the task in an agenda view, we can just type C-c C-z to open a window where we can write a note. 
 
    - Note taken on [2020-12-08 Tue 20:56] \\
      This is a quick note
 
 * Archiving
+  :PROPERTIES:
+  :ID:       f36e90e4-cf04-473e-8468-48542f144206
+  :END:
 
 Org offers two archiving methods: 
 
 *Internal Archiving* just sets an :ARCHIVE: tag which disables expanding that entry and prevents it from showing in agendas. This is done with C-c C-x a
 
 ** Example Task                                                     :ARCHIVE:
+   :PROPERTIES:
+   :ID:       e89b6d3b-3a5d-401a-8009-9a5217f4e913
+   :END:
 
 Stuff done here 
 
@@ -242,6 +408,9 @@ Stuff done here
 *Moving Subtrees* means we move the subtree to another file, the archive file. This keeps the org file lean and mean
 
 ** Moving Subtrees to an Archive File
+   :PROPERTIES:
+   :ID:       9045c646-851f-4caa-bd0a-9ee0847fa39a
+   :END:
 
 We define an archive file like this: 
 #+ARCHIVE: %s_archive::
@@ -255,13 +424,20 @@ We can also set the archive target for a subtree. For example:
 ** Books to read 
 :PROPERTIES:
 :ARCHIVE: read-books.org::* Read Books
+:ID:       9e850536-d1cd-4dd1-ab9a-e9c96c358f45
 :END:
 
 *** Yet Another Book Read (YABR)
+    :PROPERTIES:
+    :ID:       5a2b251e-e3bc-4b82-9653-5d07ac6a659d
+    :END:
 
 mhm 
 
 ** Revisiting Archive Files
+   :PROPERTIES:
+   :ID:       9818567e-7acf-492c-aef8-59e23a0b427e
+   :END:
 
 If we wish to search our archives, we could just use grep since it is all plain text
 
@@ -270,6 +446,9 @@ We can also swap to the archive file we know it is in, then switch to the agenda
 #+TITLE: Making Things More Smooth
 
 * Automatic Logging of Status Changes
+  :PROPERTIES:
+  :ID:       d50e65a1-d697-4d55-aec0-9e34330f44b2
+  :END:
 
 This will have the system prompt us for a comment when a task occurs. 
 
@@ -278,6 +457,9 @@ This will have the system prompt us for a comment when a task occurs.
 The @ indicates that we want to log a timestamp and a note when we change the keyword to TODO. The ! defines that we want to log a time stamp when we change the keyword from TODO to something else
 
 ** TODO Something to do
+   :PROPERTIES:
+   :ID:       ded7173c-b6e7-4407-b497-fc84e4297e5c
+   :END:
    :LOGBOOK:
    - State "TODO"       from "WAITING"    [2020-12-09 Wed 21:34] \\
      This thing still must be done
@@ -287,6 +469,9 @@ The @ indicates that we want to log a timestamp and a note when we change the ke
    :END:
 
 ** Disabling automatic logging for a task
+   :PROPERTIES:
+   :ID:       e893e39d-6fb1-46db-a33a-c8bfa42d4571
+   :END:
 
 If we want to disable logging, especially for repeating tasks, then we can add a line to the PROPERTIES drawer: 
 
@@ -295,38 +480,80 @@ If we want to disable logging, especially for repeating tasks, then we can add a
 :END:
 
 ** IN-PROG Variables that influence automatic logging
+   :PROPERTIES:
+   :ID:       2e97203e-0cbc-481d-a9cb-de1ed0d61c06
+   :END:
 
 *org-log-done* defined if tasks that are finished will create a logbook entry 
 *org-log-reschedule* defines if we want to create a log entry whenever we reschedule a task
 
 * Splitting Your System Into Several Files
+  :PROPERTIES:
+  :ID:       55d48809-75df-4d44-945f-0419eddd6f21
+  :END:
 
 If we wanted to split one big org file into multiple little ones, we could just copy the items into distinct files -- or we could go deeper into refiling.
 
 ** Customizing Refiling
+   :PROPERTIES:
+   :ID:       bf308ec4-dd47-4316-96ea-92b88767e4a6
+   :END:
 
 We need to customize 3 variables for an elegant way to refile items: 
 
 *** org-refile-targets
+    :PROPERTIES:
+    :ID:       c654a7c4-a725-45ec-828c-9cd0f0074af5
+    :END:
 
 This defines where refiling can place items. 
 
 *** org-refile-use-outline-path
+    :PROPERTIES:
+    :ID:       c70ea160-d9df-4412-b97b-151602661374
+    :END:
 
 This needs to be set to file which means we see the target path including the file name of the org-file where we are placing the item
 
 *** org-refile-allow-creating-parent-nodes
+    :PROPERTIES:
+    :ID:       fbcec336-c9b9-4cea-864f-9156df99fd65
+    :END:
 
 This defines if we are allowed to create new parent headlines in the target file. We set this to confirm  if the target we entered would create a new headline
 
 ** example work thing 1
+   :PROPERTIES:
+   :ID:       662421e8-10a3-4eb5-862b-d8bb2fe1e461
+   :END:
 ** example work thing 2
+   :PROPERTIES:
+   :ID:       43f3521a-e932-42a6-ac7a-72c6166ea968
+   :END:
 ** example home thing 1 
+   :PROPERTIES:
+   :ID:       43dec8bb-2565-48aa-bbb3-c528a926ea67
+   :END:
 ** example home thing 3
+   :PROPERTIES:
+   :ID:       82c59853-d179-4a6f-85be-26f4c00d6e4c
+   :END:
 ** example work thing 3
+   :PROPERTIES:
+   :ID:       f5f0b022-4957-413a-995e-6e37ee9b5e0c
+   :END:
 ** example home thing 2
+   :PROPERTIES:
+   :ID:       44991e4f-3f92-48ac-b71c-64a59eaba74f
+   :END:
 ** example work thing 4
+   :PROPERTIES:
+   :ID:       6bf3156e-335c-4a5b-aa80-e2044b35e9eb
+   :END:
 ** example home thing 4
+   :PROPERTIES:
+   :ID:       0198ad5d-a7f1-4c23-8d40-61315ff7452d
+   :END:
 
 If we want to move the entries to other org files, we can use C-c C-w and choose the target. If we want to copy them, then we could do C-c M-w
 
@@ -347,12 +574,18 @@ We can also set our agenda files to only include one or the other, or both with 
 #+END_SRC
 
 * The First Capture Template
+  :PROPERTIES:
+  :ID:       dc65377a-2040-400e-ba0b-4899d743f765
+  :END:
 
 With capture templates, we can define forms to capture our ideas in a smart way
 
 I bound the key to C-c c. You need to define an org template. In this case, here is the template I used for a work todo: 
 
 * TODO %^{Description} :NEW:
+  :PROPERTIES:
+  :ID:       9df74c1e-e3f9-4b37-b91f-909c8077dbbd
+  :END:
   Desired Outcome: %?
 :LOGBOOK:
 - Added: %U
@@ -383,6 +616,9 @@ We could also do this in elisp like so:
 #+TITLE: Workflows and Time Tracking
 
 * Ordered Tasks
+  :PROPERTIES:
+  :ID:       7e55a0fe-a6eb-4ca2-af10-9e2a8dc34e56
+  :END:
 
 In this section we learn how to enforce that tasks are completed in a predefined order
 
@@ -392,17 +628,30 @@ Suppose we have the following:
    CLOSED: [2020-12-17 Thu 19:05]
    :PROPERTIES:
    :ORDERED:  t
+   :ID:       69faac48-200b-4fec-a4a7-bae4b92c75d6
    :END:
    - State "NEXT"       from "TODO"       [2020-12-17 Thu 19:04]
 *** DONE Build the basement
     CLOSED: [2020-12-17 Thu 19:02] SCHEDULED: <2020-12-17 Thu>
+    :PROPERTIES:
+    :ID:       6ed67704-e8ef-4745-a170-33be9151563b
+    :END:
     - State "WAITING"    from "TODO"       [2020-12-17 Thu 19:02]
 *** DONE Build the ground floor
     CLOSED: [2020-12-17 Thu 19:04] SCHEDULED: <2020-12-18 Fri>
+    :PROPERTIES:
+    :ID:       b3f0d0b3-0d91-4e96-b014-6b415bf4527d
+    :END:
 *** DONE Build the roof
     CLOSED: [2020-12-17 Thu 19:04] SCHEDULED: <2020-12-19 Sat>
+    :PROPERTIES:
+    :ID:       5a71de47-3488-4085-9c49-c0dea12e5518
+    :END:
 *** DONE Build out doors and windows
     CLOSED: [2020-12-17 Thu 19:04]
+    :PROPERTIES:
+    :ID:       79b608cd-725e-45f5-91aa-51ad5da2842e
+    :END:
 - [X] Doors
 - [X] Windows
 
@@ -420,6 +669,7 @@ Suppose we have the following:
 * Timers
 :PROPERTIES:
 :CUSTOM_ID: Timers_and_things
+:ID:       3a0b2397-b52d-4216-b9ff-6c34443ea181
 :END:
 The key binding for starting a countdown timer is *C-c C-x ;*
 There is also a count up timer: *C-c C-x 0*
@@ -438,6 +688,9 @@ descriptive timestamps with C-c C-x -
 - 0:01:40 :: task 5
 
 * Clocking
+  :PROPERTIES:
+  :ID:       fdda37ed-a439-4010-a9dc-87bb04fd54fc
+  :END:
 <<Clocking Section>>
 This is helpful for knowing how long tasks take. It could also be useful in the future if I want to charge by the hour for tasks (i.e. contract work or timesheet work).
 
@@ -447,11 +700,17 @@ If you accidentally clocked into the wrong task, you can cancel the clock with C
 
 
 ** Example Task 1 
+   :PROPERTIES:
+   :ID:       b83dd25e-2c2f-456e-8d69-580c0fdc9244
+   :END:
    :LOGBOOK:
    CLOCK: [2020-12-17 Thu 19:38]--[2020-12-17 Thu 20:08] =>  0:30
    CLOCK: [2020-12-17 Thu 19:33]--[2020-12-17 Thu 19:34] =>  0:01
    :END:
 ** Example Task 2 
+   :PROPERTIES:
+   :ID:       97b5c704-fa12-45f8-9542-48afff233e6c
+   :END:
    :LOGBOOK:
    CLOCK: [2020-12-17 Thu 19:37]--[2020-12-17 Thu 19:38] =>  0:01
    CLOCK: [2020-12-17 Thu 19:37]--[2020-12-17 Thu 19:37] =>  0:00
@@ -465,6 +724,9 @@ Suppose we mostly work on just a few tasks throughout the day. We can get a menu
 If we want to see the data on the tasks we have been working on, we can do C-c C-x C-d for an overview of how much time has been spent overall on each task.
 
 * Column View
+  :PROPERTIES:
+  :ID:       0beb03fd-47a7-4f3b-bc41-56630d1e174c
+  :END:
 
 Column view offers viewing the org file in a table structure. 
 
@@ -476,6 +738,9 @@ To switch to column view, use C-c C-x C-c
 If we want to leave column view, we just press q while at the heading for which it was enabled 
 
 * Effort Estimates
+  :PROPERTIES:
+  :ID:       1e2265c7-0cfd-4c70-bfba-2deb5fe4435a
+  :END:
 
 org offers the EFFORT property to keep track of estimates of effort
 
@@ -488,6 +753,7 @@ We can also add this to column view
 ** Another Task
    :PROPERTIES:
    :Effort:   0:05
+   :ID:       44a42b37-afa0-4221-93fa-60a8859e0e7c
    :END:
    :LOGBOOK:
    CLOCK: [2020-12-17 Thu 20:11]--[2020-12-17 Thu 20:28] =>  0:17
@@ -498,6 +764,7 @@ We can also add this to column view
    :PROPERTIES:
    :Effort:   0:30
    :ORDERED:  t
+   :ID:       9e5785e0-146d-4649-b634-43d0baf81113
    :END:
    :LOGBOOK:
    CLOCK: [2020-12-17 Thu 20:11]--[2020-12-17 Thu 20:11] =>  0:00
@@ -507,6 +774,9 @@ We can also add this to column view
 #+TITLE: Linking, Attachments, and More
 
 * Linking (Internal)
+  :PROPERTIES:
+  :ID:       93bb8e4c-4549-4530-a54d-1004a58ecd92
+  :END:
 
 We can target the following with internal links: 
 
@@ -536,8 +806,144 @@ We can follow a link with C-c C-o (like open)
 We can return to where we came from with C-c &
 
 * Linking (External)
+  :PROPERTIES:
+  :ID:       6592f18c-96ae-46e6-ac34-5ad17f716c96
+  :END:
 
 The syntax for linking to other files is usually protocol:location. 
 
 For example, for an external url [ [url][url-description] ] or [[duckduckgo.com][duckduckgo]]
+
+** Link to unique IDs
+   :PROPERTIES:
+   :ID:       9a43a414-1b2a-46fd-8505-4b3f5d47a8ae
+   :END:
+
+Org mode also has an ID property that is generated using the function `org-id-get-create` and creates a 25 digit UUID for the item that has the cursor.
+
+
+** Example item
+   :PROPERTIES:
+   :ID:       ff6a0451-dfc7-4b60-9862-547a8a492090
+   :END:
+
+We can automate the id creation
+
+** Adding IDs to all headlines when saving a file
+   :PROPERTIES:
+   :ID:       19db2993-8270-4f1d-aa79-a387cd365b7f
+   :END:
+
+We define a small function that automatically adds the ID property with a unique ID to all headlines that have none when we save our current org file
+
+#+BEGIN_SRC emacs-lisp
+(defun my/org-add-ids-to-headlines-in-file ()
+  "Add ID properties to all headlines in the current file which do not already have one"
+  (interactive)
+  (org-map-entries 'org-id-get-create))
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (add-hook 'before-save-hook
+		      'my/org-add-ids-to-headlines-in-file nil 'local)))
+#+END_SRC
+
+The first function says that if a headline already has an ID do nothing, otherwise make a new UUID.
+
+Then we add it to our org-mode-hook before save. That way, when we save, it will execute the function before it saves it.
+
+** Create an ID and copy the UUID to the clipboard
+   :PROPERTIES:
+   :ID:       b5649c2c-9087-4733-ae09-b5e0512fb0d3
+   :END:
+
+We can define a function and bind it to a key. The function would create the UUID and then copy it to the kill ring. 
+
+#+BEGIN_SRC emacs-lisp
+(defun my/copy-id-to-clipboard ()
+  "Copy the ID property value to killring. If no ID present, create a new unique ID.
+   This only works in org mode buffers."
+  (interactive)
+  (when (eq major-mode 'org-mode)
+    (setq mytmpid (funcall 'org-id-get-create))
+    (kill-new mytmpid)
+    (message "Copied %s to killring" mytmpid)))
+
+
+(global-set-key (kbd "s-i") 'my/copy-id-to-clipboard)
+
+"19db2993-8270-4f1d-aa79-a387cd365b7f"
+#+END_SRC
+
+[[id:19db2993-8270-4f1d-aa79-a387cd365b7f][something]]
+
+* Attachments
+  :PROPERTIES:
+  :ID:       143426d0-36d2-48c5-ae01-571a6674f3c2
+  :END:
+
+In this less we will lead to to add external files to our items. 
+
+Attachments are stored on the hard drive. We have two possibilities to specify where the attachments should end up:
+
+** Use the ID property
+   :PROPERTIES:
+   :ID:       15a25898-28e7-4c4c-91d7-cd227ef5d4df
+   :END:
+
+If the node that gets a file attached has an ID property, then the file will be stored under a directory that is named after the UUID assigned to the item. 
+We can customize the variable org-attach-id-dir to set a path to where those ID related directories should be created. 
+
+** Use DIR property
+   :PROPERTIES:
+   :ID:       02f01591-aa41-4b5b-a844-1991022895a4
+   :END:
+
+If we have a dir property, then this will specify the location where they are stored. 
+
+If we want to have an attachment structure that is closely bound to the items, we should go with the ID method.
+
+** Invoking Org Attach                                               :ATTACH:
+   :PROPERTIES:
+   :ID:       b4736c2a-da54-4aef-88f0-4738f8ff32ed
+   :END:
+
+We can look at attached items with C-c C-a as well. We can also link to attachments
+
+[ [attachment:file.txt] [description] ]
+
+[[attachment:ptodo.txt][an agenda template for todos]]
+
+* Priorities
+  :PROPERTIES:
+  :ID:       62ae6af2-6c91-437c-ab9c-ed636d3c98fc
+  :END:
+
+In this lesson we learn which tools Org-mode offers to define priorities for tasks
+
+*** [#A] Item 1
+    :PROPERTIES:
+    :ID:       d363ee0c-2311-4df6-aea8-a7d0bf24d300
+    :END:
+*** [#B] Item 2
+    :PROPERTIES:
+    :ID:       9b6d0912-b46e-4ebc-a203-09832d0b49a6
+    :END:
+*** [#C] Item 3
+    :PROPERTIES:
+    :ID:       02ca74a5-8dc9-418c-bb82-f573618ee480
+    :END:
+
+In our agenda view, we will see the items with the highest priority on top and tasks with no priority at the bottom.
+
+We can also set custom priorities with the tag (highest lowest default):
+
+#+PRIORITIES 1 5 3
+
+* Tables
+  :PROPERTIES:
+  :ID:       331ea93b-3fc0-4f5a-813b-ad8e4996a12a
+  :END:
+
+This section is for learning about the table editor inside Org-mode
 
