@@ -947,3 +947,98 @@ We can also set custom priorities with the tag (highest lowest default):
 
 This section is for learning about the table editor inside Org-mode
 
+| Name       | Year of Birth | Age |
+| ---        |           --- | --- |
+| Rainer     |          1961 |  60 |
+| Michael    |          1991 |  30 |
+| Older Mike |          1937 |  84 |
+#+TBLFM: $3=2021-1937
+
+Basic editor commands:
+
+- add horizontal line: |- tab
+- delete a column: M-shift-<-
+- insert a column: M-shift-->
+- new horizontal line: C-c -
+- move rows up or down: M-up M-down
+
+** Table Formulas
+   :PROPERTIES:
+   :ID:       1091d430-1f71-43a2-9421-e1dbdad941fe
+   :END:
+
+We add constants to the top of the table, and formulas to the bottom of the table. 
+
+#+CONSTANTS: year=2021
+| Name              | Year of Birth | 2021 - Year of Birth |
+|-------------------+---------------+----------------------|
+| Rainer            |          1961 |                   60 |
+| Michael           |          1991 |                   30 |
+| Older Mike        |          1937 |                   84 |
+| Even Older Mike   |          1907 |                  114 |
+| Super Old Mike    |          1888 |                  133 |
+| Pretty Young Mike |          1999 |                   22 |
+#+TBLFM: $3=$year-$2
+
+#+TITLE: Chapter 7: Exporting and Publishing
+
+* Exporting
+  :PROPERTIES:
+  :ID:       fef59147-6062-431a-87bb-add5f6ebb6c0
+  :END:
+
+We can invoke the export dispatcher with C-c C-e. 
+
+We can adjust what gets exported by adding a line with options like this: 
+
+#+OPTIONS: d:t \n:t p:t todo:t
+
+d:t exports the contents of drawers like logbook
+\n:t preserves line breaks in the exported format
+p:t exports planning information, like timestamps for SCHEDULE and DEADLINE 
+todo:t includes todo keywords in the exported text
+
+** Here is the file that I did exporting with                        :ATTACH:
+   :PROPERTIES:
+   :ID:       c0bff2f1-4e6c-406d-953f-29a3c19b970a
+   :END:
+
+* Advanced Exporting
+  :PROPERTIES:
+  :ID:       76d8b3c1-56fa-42b9-842c-d579b365b563
+  :END:
+
+To enable additional export formats, you have to customize the variable org-export-backends
+
+Here are the backends currently available:
+
+Hide Org Export Backends:
+[X]    ascii       Export buffer to ASCII format
+[X]    beamer      Export buffer to Beamer presentation
+[X]    html        Export buffer to HTML format
+[X]    icalendar   Export buffer to iCalendar format
+[X]    latex       Export buffer to LaTeX format
+[ ]    man         Export buffer to MAN format
+[ ]    md          Export buffer to Markdown format
+[X]    odt         Export buffer to ODT format
+[ ]    org         Export buffer to Org format
+[ ]    texinfo     Export buffer to Texinfo format
+[ ] C  confluence  Export buffer to Confluence Wiki format
+[ ] C  deck        Export buffer to deck.js presentations
+[ ] C  freemind    Export buffer to Freemind mindmap format
+[ ] C  groff       Export buffer to Groff format
+[ ] C  koma-letter Export buffer to KOMA Scrlttrl2 format
+[ ] C  RSS 2.0     Export buffer to RSS 2.0 format
+[ ] C  s5          Export buffer to s5 presentations
+[ ] C  taskjuggler Export buffer to TaskJuggler format
+
+** Using the Beamer backend                                          :ATTACH:
+   :PROPERTIES:
+   :ID:       84af3fb4-41ad-4d06-84d3-22f2d60fdf53
+   :END:
+
+* Publishing
+  :PROPERTIES:
+  :ID:       8c1bd88e-b2f6-4098-a920-019caf4f0f73
+  :END:
+
