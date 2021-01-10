@@ -1042,3 +1042,283 @@ Hide Org Export Backends:
   :ID:       8c1bd88e-b2f6-4098-a920-019caf4f0f73
   :END:
 
+First we set up 2 files: 
+
+** Index                                                             :ATTACH:
+   :PROPERTIES:
+   :ID:       965f1a48-e3a3-40f0-be0f-22d6f5320f13
+   :END:
+
+** About Me                                                          :ATTACH:
+   :PROPERTIES:
+   :ID:       9a2d380c-1083-4c44-9497-30b6afdf48b4
+   :END:
+
+
+
+Now we want to publish these files. To org, publishing means that the files should be converted to HTML, placed inside the public_html directory of our user and the link from index should point to about.
+
+** Describing Our Project
+
+We must tell Org about our project by customizing the variable org-publish-project-alist
+
+I added the following to the Value field:
+
+(:base-directory "~/Documents/rainer_course/organized_org/web" :publishing-directory "~/Documents/rainer_course/organized_org/web/public" :publishing-function org-html-publish-to-html :section-numbers nil :with-toc nil)
+
+Now we can do the publishing with C-c C-e P then our choice. 
+
+Org will skip those files which have not been modified. 
+
+
+
+#+TITLE: More Advanced Topics
+
+* Dynamic Blocks
+
+In this section we learn how to:
+
+- Use a clock table to get detailed clocking reports
+- Use dynamic blocks to capture column views
+
+* Client 1 Project 1
+
+** Capture Requirements
+   :LOGBOOK:
+   CLOCK: [2021-01-09 Sat 19:14]--[2021-01-09 Sat 19:15] =>  0:01
+   :END:
+
+** Implement Application
+   :LOGBOOK:
+   CLOCK: [2021-01-09 Sat 19:15]--[2021-01-09 Sat 19:16] =>  0:01
+   :END:
+
+** Test Application
+   :LOGBOOK:
+   CLOCK: [2021-01-09 Sat 19:16]--[2021-01-09 Sat 19:48] =>  0:32
+   :END:
+
+* Inserting a clock table
+
+C-c C-x x clocktable RET
+
+* Clock Table
+
+#+BEGIN: clocktable :scope file :maxlevel 2 :block 2021-01-09
+#+CAPTION: Clock summary at [2021-01-09 Sat 19:49], for Saturday, January 09, 2021.
+| Headline                  | Time   |      |
+|---------------------------+--------+------|
+| *Total time*              | *0:34* |      |
+|---------------------------+--------+------|
+| Client 1 Project 1        | 0:34   |      |
+| \_  Capture Requirements  |        | 0:01 |
+| \_  Implement Application |        | 0:01 |
+| \_  Test Application      |        | 0:32 |
+#+END:
+
+
+:scope describes the scope to consider. "subtree" is the default, but in our case we can change it to file which means to look for all clocking entries in the current buffer. 
+:maxlevel describes the maximum depth to which times are listed in the table. Clocks at deeper levels are summed into the upper level
+:block defines the time block to consider for the clock table. 
+
+* Updating the clock table. 
+
+After changing the begin line of our clock table to #+BEGIN: clocktable :scope file :maxlevel 2 :block 2019-07 we would see the clock table for July 2019.
+
+Inside the definition of block we can specify things like dates:
+- 2021-01-09
+- 2021-01 
+- 2021 
+- 2021-Q1
+- today yesterday today-N thisweek lastweek thisweek-N thismonth ... thisyear ... untilnow
+
+* Capturing Column Views
+
+Since a column view is a text overlay, usually we can not export it. There is a dynamic block which holds the column view as normal text so that it can be exported.
+
+** Inserting a column view
+
+* Columnview
+#+BEGIN: columnview :hlines 1 :id global
+| Task                                            | TODO      | Clock |
+|-------------------------------------------------+-----------+-------|
+| Getting Yourself Organized with Org-mode        |           |       |
+|-------------------------------------------------+-----------+-------|
+| Headlines & Outline Mode                        |           |       |
+| Level 1 Headline                                |           |       |
+| Level 2 Headline A                              |           |       |
+| Level 2 Headline B                              |           |       |
+|-------------------------------------------------+-----------+-------|
+| To-Do Keywords                                  |           |       |
+| Thing 1 that needs to be done                   | TODO      |       |
+| Thing 2 that needs to be done                   | IN-PROG   |       |
+| Thing 3 that needs to be done                   | WAITING   |       |
+| Thing 4 that needs to be done                   | DONE      |       |
+| Thing 1 that needs to be done                   | NEXT      |       |
+| Thing 2 that needs to be done                   | TODO      |       |
+| Thing 3 that needs to be done                   | WAITING   |       |
+| Thing 4 that needs to be done                   | SOMEDAY   |       |
+| Thing 5 that needs to be done                   | PROJ      |       |
+| Thing 6 that needs to be done                   | DONE      |       |
+| Thing 7 that needs to be done                   | CANCELLED |       |
+| Item to do                                      | NEXT      |       |
+|-------------------------------------------------+-----------+-------|
+| Schedule, Deadlines, & Agenda View              |           |       |
+| task #1                                         |           |       |
+| task #2                                         |           |       |
+| task #3                                         |           |       |
+| task #4                                         |           |       |
+|-------------------------------------------------+-----------+-------|
+| Repeating Tasks                                 |           |       |
+| Example Task                                    | REPEAT    |       |
+| Specifying Intervals                            |           |       |
+|-------------------------------------------------+-----------+-------|
+| Checklists                                      |           |       |
+| Easy peasy checklist                            | NEXT      |       |
+| Check it out                                    |           |       |
+| Easy peasy checklist 2                          | NEXT      |       |
+|-------------------------------------------------+-----------+-------|
+| Tags                                            |           |       |
+| Example Task 1                                  | NEXT      |       |
+| Example Task 2                                  | NEXT      |       |
+| Example Task 3                                  |           |       |
+| Example Task 4                                  |           |       |
+| Example Task 5                                  | NEXT      |       |
+| Example Task 6                                  |           |       |
+| Example Task 7                                  |           |       |
+| Example Task 8                                  |           |       |
+|-------------------------------------------------+-----------+-------|
+| Advanced Agenda Views                           |           |       |
+| Agenda for Current Week or Day                  |           |       |
+| List of all TODO Entries                        |           |       |
+| Entries with a Special TODO Keyword             |           |       |
+| Match a TAGS/PROP/TODO query                    |           |       |
+| Searching for keywords                          |           |       |
+|-------------------------------------------------+-----------+-------|
+| Customized Agenda Views                         |           |       |
+| Custom Agenda View Editor                       |           |       |
+| Directly in the startup file                    |           |       |
+|-------------------------------------------------+-----------+-------|
+| Drawers, Logging, and Quick Notes               |           |       |
+| What is logging good for?                       |           |       |
+| Taking a quick note                             |           |       |
+|-------------------------------------------------+-----------+-------|
+| Archiving                                       |           |       |
+| Moving Subtrees to an Archive File              |           |       |
+| Books to read                                   |           |       |
+| Yet Another Book Read (YABR)                    |           |       |
+| Revisiting Archive Files                        |           |       |
+|-------------------------------------------------+-----------+-------|
+| Automatic Logging of Status Changes             |           |       |
+| Something to do                                 | TODO      |       |
+| Disabling automatic logging for a task          |           |       |
+| Variables that influence automatic logging      | IN-PROG   |       |
+|-------------------------------------------------+-----------+-------|
+| Splitting Your System Into Several Files        |           |       |
+| Customizing Refiling                            |           |       |
+| org-refile-targets                              |           |       |
+| org-refile-use-outline-path                     |           |       |
+| org-refile-allow-creating-parent-nodes          |           |       |
+| example work thing 1                            |           |       |
+| example work thing 2                            |           |       |
+| example home thing 1                            |           |       |
+| example home thing 3                            |           |       |
+| example work thing 3                            |           |       |
+| example home thing 2                            |           |       |
+| example work thing 4                            |           |       |
+| example home thing 4                            |           |       |
+|-------------------------------------------------+-----------+-------|
+| The First Capture Template                      |           |       |
+|-------------------------------------------------+-----------+-------|
+| %^{Description}                                 | TODO      |       |
+|-------------------------------------------------+-----------+-------|
+| Ordered Tasks                                   |           |       |
+| Build A House                                   | DONE      |       |
+| Build the basement                              | DONE      |       |
+| Build the ground floor                          | DONE      |       |
+| Build the roof                                  | DONE      |       |
+| Build out doors and windows                     | DONE      |       |
+|-------------------------------------------------+-----------+-------|
+| Timers                                          |           |       |
+|-------------------------------------------------+-----------+-------|
+| Clocking                                        |           |  0:33 |
+| Example Task 1                                  |           |  0:31 |
+| Example Task 2                                  |           |  0:02 |
+|-------------------------------------------------+-----------+-------|
+| Column View                                     |           |       |
+|-------------------------------------------------+-----------+-------|
+| Effort Estimates                                |           |  0:19 |
+| Another Task                                    |           |  0:19 |
+| A different task                                |           |       |
+|-------------------------------------------------+-----------+-------|
+| Linking (Internal)                              |           |       |
+|-------------------------------------------------+-----------+-------|
+| Linking (External)                              |           |       |
+| Link to unique IDs                              |           |       |
+| Example item                                    |           |       |
+| Adding IDs to all headlines when saving a file  |           |       |
+| Create an ID and copy the UUID to the clipboard |           |       |
+|-------------------------------------------------+-----------+-------|
+| Attachments                                     |           |       |
+| Use the ID property                             |           |       |
+| Use DIR property                                |           |       |
+| Invoking Org Attach                             |           |       |
+|-------------------------------------------------+-----------+-------|
+| Priorities                                      |           |       |
+| Item 1                                          |           |       |
+| Item 2                                          |           |       |
+| Item 3                                          |           |       |
+|-------------------------------------------------+-----------+-------|
+| Tables                                          |           |       |
+| Table Formulas                                  |           |       |
+|-------------------------------------------------+-----------+-------|
+| Exporting                                       |           |       |
+| Here is the file that I did exporting with      |           |       |
+|-------------------------------------------------+-----------+-------|
+| Advanced Exporting                              |           |       |
+| Using the Beamer backend                        |           |       |
+|-------------------------------------------------+-----------+-------|
+| Publishing                                      |           |       |
+| Index                                           |           |       |
+| About Me                                        |           |       |
+| Describing Our Project                          |           |       |
+|-------------------------------------------------+-----------+-------|
+| Dynamic Blocks                                  |           |       |
+|-------------------------------------------------+-----------+-------|
+| Client 1 Project 1                              |           |  0:34 |
+| Capture Requirements                            |           |  0:01 |
+| Implement Application                           |           |  0:01 |
+| Test Application                                |           |  0:32 |
+|-------------------------------------------------+-----------+-------|
+| Inserting a clock table                         |           |       |
+|-------------------------------------------------+-----------+-------|
+| Clock Table                                     |           |       |
+|-------------------------------------------------+-----------+-------|
+| Updating the clock table.                       |           |       |
+|-------------------------------------------------+-----------+-------|
+| Capturing Column Views                          |           |       |
+| Inserting a column view                         |           |       |
+|-------------------------------------------------+-----------+-------|
+| Columnview                                      |           |       |
+#+END:
+
+
+* Tracking Habits
+
+Orgmode has a module that helps us track how good we are at keeping up habits. 
+
+First we need to enable the habits module by customizing org-modules. 
+
+Habits need to be tasks with a recurring todo keyword, like REPEAT.
+
+* Habits
+** REPEAT Practice Drums every 2nd or 3rd day
+   SCHEDULED: <2021-01-09 Sat .+2d/3d>
+:PROPERTIES:
+:STYLE: habit
+:END:
+
+* Bulk Agenda Actions
+
+
+
