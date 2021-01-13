@@ -118,8 +118,8 @@ The item in the () is a hot-key that can be activated by using C-c C-t inside of
    :PROPERTIES:
    :ID:       72f18820-29d8-47b3-b51a-06305dabe5f8
    :END:
-** task #2
-   SCHEDULED: <2020-12-31 Thu> DEADLINE: <2021-01-01 Fri>
+** DONE task #2
+   CLOSED: [2021-01-12 Tue 20:46] SCHEDULED: <2020-12-31 Thu> DEADLINE: <2021-01-01 Fri>
    :PROPERTIES:
    :ID:       1d958672-d067-408a-b8a8-6526ed938600
    :END:
@@ -128,8 +128,8 @@ The item in the () is a hot-key that can be activated by using C-c C-t inside of
    :PROPERTIES:
    :ID:       8aefa6c4-f140-4fef-8ff9-0fa025f8c576
    :END:
-** task #4 
-   DEADLINE: <2020-12-07 Mon>
+** DONE task #4 
+   CLOSED: [2021-01-12 Tue 20:46] DEADLINE: <2020-12-07 Mon>
    :PROPERTIES:
    :ID:       89c269de-e686-43ea-b871-24dfbbbd7d43
    :END:
@@ -1312,13 +1312,95 @@ First we need to enable the habits module by customizing org-modules.
 Habits need to be tasks with a recurring todo keyword, like REPEAT.
 
 * Habits
-** REPEAT Practice Drums every 2nd or 3rd day
-   SCHEDULED: <2021-01-09 Sat .+2d/3d>
+** NEXT Practice Drums every 2nd or 3rd day
+   SCHEDULED: <2021-01-14 Thu .+2d/3d>
 :PROPERTIES:
 :STYLE: habit
 :END:
 
 * Bulk Agenda Actions
 
+In this section we learn how to mark items in the agenda view and perform bulk actions on them.
 
+Essentially we open agenda view C-c a then mark items with the m key.
+
+Then we press shift-B which allows us to take an action on the bulk marked items.
+We can do things like changing todo state, rescheduling, and archiving.
+
+* Calendar Import
+
+  He imported from google calendar. I'd like to try to import my outlook calendar:
+
+#+BEGIN_SRC emacs-lisp
+   ;; configure excorporate
+   ;; allow opening the exchange calendar with 'e' from calendar 
+   (evil-define-key 'motion calendar-mode-map "e" #'exco-calendar-show-day)
+
+   (setq-default
+    ;; configure email address and office 365 exchange server adddress for exchange web services
+    excorporate-configuration
+    (quote
+     ("email@org.com" . "https://outlook.office365.com/EWS/Exchange.asmx"))
+    ;; integrate emacs diary entries into org agenda
+    org-agenda-include-diary t)
+   ;; activate excorporate and request user/password to start connection
+   (excorporate)
+   ;; enable the diary integration (i.e. write exchange calendar to emacs diary file -> ~/.emacs.d/diary must exist)
+   (excorporate-diary-enable)
+   (defun ab/agenda-update-diary ()
+     "call excorporate to update the diary for today"
+     (exco-diary-diary-advice (calendar-current-date) (calendar-current-date) #'message "diary updated"))
+   
+   ;; update the diary every time the org agenda is refreshed
+   (add-hook 'org-agenda-cleanup-fancy-diary-hook 'ab/agenda-update-diary)
+#+END_SRC
+
+* Working with Source Code Blocks
+
+#+BEGIN_SRC dot :file graph.png :cmdline -Kdot -Tpng
+digraph G {
+#
+rankdir=LR;
+new_idea [ label="CAPTURE" shape=box];
+someday [color = "red"];
+{rank=same; done, cancelled, forwarded}
+next [color="red"];
+todo [color="red"];
+repeat [color="red"];
+next -> repeat;
+next -> delegated;
+todo -> repeat;
+waiting [color="red"];
+delegated [color="red"];
+done [color="green"];
+cancelled [color="green"];
+forwarded [color="green"];
+new_idea -> someday;
+# new_idea -> next;
+new_idea -> todo;
+# new_idea -> repeat;
+repeat -> repeat;
+someday -> todo -> next;
+someday -> next;
+next -> waiting;
+waiting -> next;
+todo -> done;
+next -> done;
+repeat -> done;
+waiting -> done;
+todo -> cancelled;
+next -> cancelled;
+waiting -> cancelled;
+someday -> cancelled;
+todo -> delegated;
+delegated -> done;
+delegated -> cancelled;
+todo -> forwarded;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:graph.png]]
+
+* Goal Setting and Tracking
 
